@@ -4,7 +4,7 @@
 #include "ejes.h"
 #include "malla.h"
 #include "cubo.h"
-#include "piramidepentagonal.h"
+#include "piramidehexagonal.h"
 
 typedef enum {NADA, SELOBJETO,SELVISUALIZACION} menu;
 class Escena
@@ -36,7 +36,7 @@ class Escena
    // Objetos de la escena
    Ejes ejes;
    Cubo * cubo = nullptr ; // es importante inicializarlo a 'nullptr'
-   PiramidePentagonal * piramide= nullptr ; // es importante inicializarlo a 'nullptr'
+   PiramideHexagonal * piramide= nullptr ; // es importante inicializarlo a 'nullptr'
 
    
    public:

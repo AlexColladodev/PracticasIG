@@ -23,6 +23,7 @@ Escena::Escena()
     // .....
 
     cubo = new Cubo(50);
+    piramide = new PiramideHexagonal(100, 25, 50);
 
 }
 
@@ -67,7 +68,8 @@ void Escena::dibujar()
     // cubo->draw()
     // o    piramide->draw()
 
-   cubo->draw();//Esto es posible ya que Cubo y Piramide heredan de Malla3D
+   //cubo->draw();//Esto es posible ya que Cubo y Piramide heredan de Malla3D
+    piramide->draw();
 
     
 }
