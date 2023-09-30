@@ -27,21 +27,14 @@ void Malla3D::draw()
 {
    // (la primera vez, se deben crear los VBOs y guardar sus identificadores en el objeto)
    // completar (práctica 1)
+   if(id_vbo_ver == 0 && id_vbo_tri == 0 && id_vbo_c == 0){
+         id_vbo_ver = CrearVBO(GL_ARRAY_BUFFER, v.size() * 3 * GL_FLOAT, v.data());
 
-      id_vbo_ver = CrearVBO(GL_ARRAY_BUFFER, v.size() * 3 * GL_FLOAT, v.data());
+         id_vbo_tri = CrearVBO(GL_ELEMENT_ARRAY_BUFFER, f.size() * 3 * GL_UNSIGNED_INT, f.data());
 
-      id_vbo_tri = CrearVBO(GL_ELEMENT_ARRAY_BUFFER, f.size() * 3 * GL_UNSIGNED_INT, f.data());
+         id_vbo_c = CrearVBO(GL_ARRAY_BUFFER, c.size() * 3 * GL_FLOAT, c.data());
+   }
 
-      id_vbo_c = CrearVBO(GL_ARRAY_BUFFER, c.size() * 3 * GL_FLOAT, c.data());
-
-/*
-   glEnableClientState ( GL_VERTEX_ARRAY );
-   glEnableClientState ( GL_COLOR_ARRAY );
-
-   glBindBuffer ( GL_ARRAY_BUFFER , id_vbo_ver );
-   glVertexPointer ( 3 , GL_FLOAT , 0 , 0 );
-   glBindBuffer ( GL_ARRAY_BUFFER , 0 );
-*/
 
    if(id_vbo_c != 0){
       // habilitar uso de array de colores
