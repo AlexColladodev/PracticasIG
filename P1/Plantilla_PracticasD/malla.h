@@ -30,7 +30,7 @@ class Malla3D
    //Crear vbo y metodo asociado
    GLuint id_vbo_tri;
    GLuint id_vbo_ver;
-   GLuint id_vbo_color;
+   GLuint id_vbo_c;
    GLuint CrearVBO( GLuint tipo_vbo , GLuint tam , GLvoid * puntero_ram );
 
    std::vector<Tupla3f> v ;   // tabla de coordenadas de vértices (una tupla por vértice, con tres floats)

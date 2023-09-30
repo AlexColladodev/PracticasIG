@@ -14,6 +14,7 @@ PiramideHexagonal::PiramideHexagonal(float h, float r, float r2)
 
    createVertexArray();
    createTablaTriangulos();
+   createColor();
 }
 
 void PiramideHexagonal::createVertexArray(){
@@ -92,6 +93,21 @@ void PiramideHexagonal::createTablaTriangulos(){
    f.push_back({3, 4, 9});
    f.push_back({4, 10, 9});
 
-   std::cout << "FUnciona";
+}
+
+void PiramideHexagonal::createColor(){ //ROJA pero con variaciones para que se note la piramide
+   c.push_back({1.0f, 0.05, 0.0f}); //0
+   c.push_back({1.0f, 0.0f, 0.5f}); //1
+   c.push_back({1.0f, 0.2f, 0.0f}); //2
+   c.push_back({1.0f, 0.0f, 0.2f}); //3
+   c.push_back({1.0f, 0.7f, 0.0f}); //4
+   c.push_back({1.0f, 0.0f, 0.7f}); //5
+   c.push_back({1.0f, 0.8f, 0.0f}); //6
+   c.push_back({1.0f, 0.0f, 0.8f}); //7
+   c.push_back({1.0f, 0.1f, 0.0f}); //8
+   c.push_back({1.0f, 0.0f, 0.1f}); //9 
+   c.push_back({1.0f, 0.4f, 0.0f}); //10
+   c.push_back({1.0f, 0.0f, 0.4f}); //11
+                        
 }
 

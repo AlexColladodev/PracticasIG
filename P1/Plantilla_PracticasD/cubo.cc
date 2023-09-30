@@ -53,7 +53,16 @@ void Cubo::createTablaTriangulos(){
    f.push_back({7, 4, 1});  
 }
 
-void Cubo::createColorCubo(){
-   c.push_back({0 , 0, 0});
+void Cubo::createColorCubo(){//AZUL
+   //Color segun vertice
+   c.push_back({0.0f, 0.0f, 1.0f}); //0
+   c.push_back({0.0f, 0.0f, 1.0f}); //1
+   c.push_back({0.0f, 0.0f, 1.0f}); //2
+   c.push_back({0.0f, 0.0f, 1.0f}); //3
+   c.push_back({0.0f, 0.0f, 1.0f}); //4
+   c.push_back({0.0f, 0.0f, 1.0f}); //5
+   c.push_back({0.0f, 0.0f, 1.0f}); //6
+   c.push_back({0.0f, 0.0f, 1.0f}); //7
+   
 }
 

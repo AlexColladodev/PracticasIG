@@ -18,10 +18,6 @@ Escena::Escena()
 
     ejes.changeAxisSize( 5000 );
 
-    // crear los objetos de la escena....
-    // .......completar: ...
-    // .....
-
     cubo = new Cubo(50);
     piramide = new PiramideHexagonal(100, 25, 50);
 
