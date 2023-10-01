@@ -9,11 +9,13 @@ Cubo::Cubo(float lado)
    createVertexArray(this->lado);   //Vertices
    createTablaTriangulos();         //Tabla de triangulos
    createColorCubo();
+   visualizarLinea();
+   visualizarPuntos();
 
 }
 
 //Son 9 vertices
-   //Uno de sus vertices en el origen
+   //Uno de sus vertices en el origen, es decir que el cubo no estara centrado con la escena
 void Cubo::createVertexArray(float lado){
 
    v.push_back({0, 0, 0});         //0
@@ -53,16 +55,16 @@ void Cubo::createTablaTriangulos(){
    f.push_back({7, 4, 1});  
 }
 
-void Cubo::createColorCubo(){//AZUL
+void Cubo::createColorCubo(){//VERDE
    //Color segun vertice
-   c.push_back({0.0f, 0.0f, 1.0f}); //0
-   c.push_back({0.0f, 0.0f, 1.0f}); //1
-   c.push_back({0.0f, 0.0f, 1.0f}); //2
-   c.push_back({0.0f, 0.0f, 1.0f}); //3
-   c.push_back({0.0f, 0.0f, 1.0f}); //4
-   c.push_back({0.0f, 0.0f, 1.0f}); //5
-   c.push_back({0.0f, 0.0f, 1.0f}); //6
-   c.push_back({0.0f, 0.0f, 1.0f}); //7
+   c.push_back({0.0f, 1.0f, 0.0f}); //0
+   c.push_back({0.0f, 1.0f, 0.0f}); //1
+   c.push_back({0.0f, 1.0f, 0.0f}); //2
+   c.push_back({0.0f, 1.0f, 0.0f}); //3
+   c.push_back({0.0f, 1.0f, 0.0f}); //4
+   c.push_back({0.0f, 1.0f, 0.0f}); //5
+   c.push_back({0.0f, 1.0f, 0.0f}); //6
+   c.push_back({0.0f, 1.0f, 0.0f}); //7
    
 }
 

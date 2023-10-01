@@ -39,5 +39,12 @@
 
 #include "tuplasg.h" // tipos: Tupla3f, Tupla2f, Tupla3d, etc.........
 
+//Para poder usarlo en escena y malla
+typedef struct {
+    bool PUNTOS;
+    bool LINEA;
+    bool SOLIDO;
+} visualizacion;
+
 
 #endif // AUX_H_INCLUDED

@@ -7,6 +7,13 @@
 #include "piramidehexagonal.h"
 
 typedef enum {NADA, SELOBJETO,SELVISUALIZACION} menu;
+
+typedef struct {
+    bool CUBO;
+    bool PIRAMIDE;
+} objeto;
+
+
 class Escena
 {
 
@@ -33,6 +40,8 @@ class Escena
    void clear_window();
 
    menu modoMenu=NADA;
+   objeto obj;
+   visualizacion vis; //auxiliar.h
    // Objetos de la escena
    Ejes ejes;
    Cubo * cubo = nullptr ; // es importante inicializarlo a 'nullptr'
@@ -51,6 +60,12 @@ class Escena
 	// Interacción con la escena
 	bool teclaPulsada( unsigned char Tecla1, int x, int y ) ;
 	void teclaEspecial( int Tecla1, int x, int y );
+
+    //Opcion Menu
+    bool menuSeleccionObjeto(unsigned char tecla);
+    bool menuSeleccionVisualizacion(unsigned char tecla);
+    inline menu getMenu(){return modoMenu;};
+
 
 };
 #endif

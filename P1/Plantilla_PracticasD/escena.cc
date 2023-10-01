@@ -40,6 +40,11 @@ void Escena::inicializar( int UI_window_width, int UI_window_height )
 
    change_projection( float(UI_window_width)/float(UI_window_height) );
 	glViewport( 0, 0, UI_window_width, UI_window_height );
+
+   glEnable( GL_CULL_FACE );
+
+   obj = {0, 0}; //CUBO - PIRAMIDE
+   vis = {0, 0, 1}; // PUNTOS - LINEAS - SOLIDO
 }
 
 
@@ -64,9 +69,19 @@ void Escena::dibujar()
     // cubo->draw()
     // o    piramide->draw()
 
-   //cubo->draw();//Esto es posible ya que Cubo y Piramide heredan de Malla3D
+   /*Esto es posible ya que Cubo y Piramide heredan de Malla3D
+   cubo->draw();
     piramide->draw();
-
+    Para poder dibujarlos simultaneamente
+    */
+    
+      if(obj.CUBO){
+         cubo->draw(vis);
+      }
+      if (obj.PIRAMIDE){
+         piramide->draw(vis);
+      }
+   
     
 }
 
@@ -83,6 +98,7 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
    using namespace std ;
    cout << "Tecla pulsada: '" << tecla << "'" << endl;
    bool salir=false;
+   
    switch( toupper(tecla) )
    {
       case 'Q' :
@@ -91,17 +107,29 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
          else {
             salir=true ;
          }
+         cout << "SALIENDO " << endl;
          break ;
       case 'O' :
-         // ESTAMOS EN MODO SELECCION DE OBJETO
+
          modoMenu=SELOBJETO; 
+         std::cout << "MODO SELECCION DE OBJETO" << std::endl;
+         std::cout << "\tC - DIBUJAR/BORRAR CUBO" << std::endl;
+         std::cout << "\tP - DIBUJAR/BORRAR PIRAMIDE HEXAGONAL" << std::endl;
+         std::cout << "\tQ - VOLVER AL MENU PRINCIPAL" << std::endl;
+
          break ;
+
         case 'V' :
          // ESTAMOS EN MODO SELECCION DE MODO DE VISUALIZACION
          modoMenu=SELVISUALIZACION;
+         std::cout << "MODO SELECCION DE VISUALIZACION" << std::endl;
+         std::cout << "\tP - VER/OCULTAR PUNTOS" << std::endl;
+         std::cout << "\tL - VER/OCULTAR LINEAS" << std::endl;
+         std::cout << "\tS - VER/OCULTAR SOLIDO" << std::endl;
+         std::cout << "\tQ - VOLVER AL MENU PRINCIPAL" << std::endl;
+
          break ;
 
-         // COMPLETAR con los diferentes opciones de teclado
             
    }
    return salir;
@@ -173,4 +201,74 @@ void Escena::change_observer()
    glTranslatef( 0.0, 0.0, -Observer_distance );
    glRotatef( Observer_angle_y, 0.0 ,1.0, 0.0 );
    glRotatef( Observer_angle_x, 1.0, 0.0, 0.0 );
+}
+
+//**************************************************************************
+// Funcion para el menu de la seleccion del objeto
+//***************************************************************************
+
+bool Escena::menuSeleccionObjeto(unsigned char tecla){
+
+   bool salir=false;
+   std::cout << "Tecla pulsada: '" << tecla << "'" << std::endl;
+
+   switch(toupper(tecla)){
+
+      case 'Q' :
+         std::cout << "SALIENDO MODO OBJETO " << std::endl;
+         if (modoMenu!=NADA)
+            modoMenu=NADA;            
+         else {
+            salir=true ;
+         }
+         break ;
+
+      case 'C':
+         obj.CUBO = (obj.CUBO + 1) % 2;
+         break;
+
+      case 'P':
+         obj.PIRAMIDE = (obj.PIRAMIDE + 1) % 2;
+         break;
+
+   }
+
+   return salir;
+}
+
+//**************************************************************************
+// Funcion para el menu de la seleccion de la visualizacion
+//***************************************************************************
+
+bool Escena::menuSeleccionVisualizacion(unsigned char tecla){
+
+   bool salir=false;
+   std::cout << "Tecla pulsada: '" << tecla << "'" << std::endl;
+
+   switch(toupper(tecla)){
+
+      case 'Q' :
+         std::cout << "SALIENDO MODO VISUALIZACION " << std::endl;
+         if (modoMenu!=NADA)
+            modoMenu=NADA;            
+         else {
+            salir=true ;
+         }
+         break ;
+
+      case 'P':
+         vis.PUNTOS = (vis.PUNTOS + 1) % 2;
+         break;
+
+      case 'L':
+         vis.LINEA = (vis.LINEA + 1) % 2;
+         break;
+
+      case 'S':
+         vis.SOLIDO = (vis.SOLIDO + 1) % 2;
+         break;
+         
+   }
+
+   return salir;
 }
