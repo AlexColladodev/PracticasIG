@@ -96,6 +96,38 @@ void Escena::dibujar()
 bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
 {
    using namespace std ;
+
+   switch(modoMenu){
+      case SELOBJETO:
+         switch(toupper(tecla)){
+         case 'C':
+            obj.CUBO = (obj.CUBO + 1) % 2;
+            break;
+
+         case 'P':
+            obj.PIRAMIDE = (obj.PIRAMIDE + 1) % 2;
+            break;
+         }
+         break;//SELOBJETO
+      
+      case SELVISUALIZACION:
+         switch(toupper(tecla)){ 
+            case 'D':
+               vis.PUNTOS = (vis.PUNTOS + 1) % 2;
+               break;
+
+            case 'L':
+               vis.LINEA = (vis.LINEA + 1) % 2;
+               break;
+
+            case 'S':
+               vis.SOLIDO = (vis.SOLIDO + 1) % 2;
+               break;
+         }
+         break;//SELVIS
+   }
+
+
    cout << "Tecla pulsada: '" << tecla << "'" << endl;
    bool salir=false;
    
@@ -123,7 +155,7 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
          // ESTAMOS EN MODO SELECCION DE MODO DE VISUALIZACION
          modoMenu=SELVISUALIZACION;
          std::cout << "MODO SELECCION DE VISUALIZACION" << std::endl;
-         std::cout << "\tP - VER/OCULTAR PUNTOS" << std::endl;
+         std::cout << "\tD - VER/OCULTAR PUNTOS" << std::endl;
          std::cout << "\tL - VER/OCULTAR LINEAS" << std::endl;
          std::cout << "\tS - VER/OCULTAR SOLIDO" << std::endl;
          std::cout << "\tQ - VOLVER AL MENU PRINCIPAL" << std::endl;
@@ -203,72 +235,3 @@ void Escena::change_observer()
    glRotatef( Observer_angle_x, 1.0, 0.0, 0.0 );
 }
 
-//**************************************************************************
-// Funcion para el menu de la seleccion del objeto
-//***************************************************************************
-
-bool Escena::menuSeleccionObjeto(unsigned char tecla){
-
-   bool salir=false;
-   std::cout << "Tecla pulsada: '" << tecla << "'" << std::endl;
-
-   switch(toupper(tecla)){
-
-      case 'Q' :
-         std::cout << "SALIENDO MODO OBJETO " << std::endl;
-         if (modoMenu!=NADA)
-            modoMenu=NADA;            
-         else {
-            salir=true ;
-         }
-         break ;
-
-      case 'C':
-         obj.CUBO = (obj.CUBO + 1) % 2;
-         break;
-
-      case 'P':
-         obj.PIRAMIDE = (obj.PIRAMIDE + 1) % 2;
-         break;
-
-   }
-
-   return salir;
-}
-
-//**************************************************************************
-// Funcion para el menu de la seleccion de la visualizacion
-//***************************************************************************
-
-bool Escena::menuSeleccionVisualizacion(unsigned char tecla){
-
-   bool salir=false;
-   std::cout << "Tecla pulsada: '" << tecla << "'" << std::endl;
-
-   switch(toupper(tecla)){
-
-      case 'Q' :
-         std::cout << "SALIENDO MODO VISUALIZACION " << std::endl;
-         if (modoMenu!=NADA)
-            modoMenu=NADA;            
-         else {
-            salir=true ;
-         }
-         break ;
-
-      case 'P':
-         vis.PUNTOS = (vis.PUNTOS + 1) % 2;
-         break;
-
-      case 'L':
-         vis.LINEA = (vis.LINEA + 1) % 2;
-         break;
-
-      case 'S':
-         vis.SOLIDO = (vis.SOLIDO + 1) % 2;
-         break;
-         
-   }
-
-   return salir;
-}

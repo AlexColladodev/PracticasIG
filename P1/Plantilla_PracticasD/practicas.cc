@@ -57,21 +57,10 @@ void change_window_size( int newWidth, int newHeight )
 void normal_keys( unsigned char tecla, int x, int y )
 {
 	int salir = 0;
- 
-   //Si la escena no es un puntero a nulo entonces regresamos el modoMenu (que contiene NADA, SELOBJETO, SELVISUALIZACION)
-   if ( escena!= nullptr )
-      switch(escena->getMenu()){
-         case SELOBJETO:
-            escena->menuSeleccionObjeto(tecla);
-            break;
-         case SELVISUALIZACION:
-            escena->menuSeleccionVisualizacion(tecla);
-            break;
-         default: 
-            salir = escena->teclaPulsada( tecla, x, y );
-            break;
 
-      }
+   if ( escena!= nullptr )
+      salir = escena->teclaPulsada( tecla, x, y );
+
 	if ( salir )   {
 		delete escena;
         escena = nullptr ;

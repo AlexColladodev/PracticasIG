@@ -61,10 +61,6 @@ class Escena
 	bool teclaPulsada( unsigned char Tecla1, int x, int y ) ;
 	void teclaEspecial( int Tecla1, int x, int y );
 
-    //Opcion Menu
-    bool menuSeleccionObjeto(unsigned char tecla);
-    bool menuSeleccionVisualizacion(unsigned char tecla);
-    inline menu getMenu(){return modoMenu;};
 
 
 };
