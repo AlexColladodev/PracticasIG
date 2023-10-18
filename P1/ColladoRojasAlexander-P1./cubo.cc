@@ -17,7 +17,7 @@ Cubo::Cubo(float lado)
 //Son 9 vertices
    //Uno de sus vertices en el origen, es decir que el cubo no estara centrado con la escena
 void Cubo::createVertexArray(float lado){
-
+/*
    v.push_back({0, 0, 0});         //0
    v.push_back({lado, 0, 0});      //1
    v.push_back({0, lado, 0});      //2
@@ -26,6 +26,16 @@ void Cubo::createVertexArray(float lado){
    v.push_back({lado, lado, -lado});   //5
    v.push_back({0, lado, -lado});   //6
    v.push_back({0, 0, -lado});   //7
+   */
+
+   v.push_back({-lado/2, 0, lado/2});         //0
+   v.push_back({lado/2, 0, lado/2});      //1
+   v.push_back({-lado/2, lado, lado/2});      //2
+   v.push_back({lado/2, lado, lado/2});   //3
+   v.push_back({lado/2, 0, -lado/2});   //4
+   v.push_back({lado/2, lado, -lado/2});   //5
+   v.push_back({-lado/2, lado, -lado/2});   //6
+   v.push_back({-lado/2, 0, -lado/2});   //7
 }
 
 void Cubo::createTablaTriangulos(){
