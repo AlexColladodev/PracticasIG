@@ -20,11 +20,16 @@ Escena::Escena()
 
     cubo = new Cubo(50);
     piramide = new PiramideHexagonal(100, 25, 50);
+
     beethoven = new ObjPLY("plys/beethoven.ply");
     beethoven->createColor();
     beethoven->visualizarLinea();
     beethoven->visualizarPuntos();
-    copa = new ObjRevolucion("plys/copa.ply", 15, true, false);
+    
+    copa = new ObjRevolucion("plys/copa.ply", 15);
+    copa->createColor();
+    copa->visualizarLinea();
+    copa->visualizarPuntos();
    
 
    obj = {0, 0, 0}; //CUBO - PIRAMIDE - BEETHOVEN
@@ -90,6 +95,7 @@ void Escena::dibujar()
          beethoven->draw(vis);//Escalarlo
       }
 
+      copa->draw(vis);
    
     
 }
