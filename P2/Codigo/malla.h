@@ -27,7 +27,7 @@ class Malla3D
    void visualizarLinea();
    void visualizarPuntos();
    void habilitarUsarTriangulos();
-   void createColor();
+   void createColor(Tupla3f tupla = {1.0f, 0.0f, 1.0f});
 
    protected:
 

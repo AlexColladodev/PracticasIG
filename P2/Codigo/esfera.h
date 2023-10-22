@@ -2,16 +2,16 @@
 //
 // Informática Gráfica (Grado Informática)
 //
-// Archivo: Cubo.h
+// Archivo: Esfera.h
 
 //
 // #############################################################################
 
-#ifndef OBJREVOLUCION_H_INCLUDED
-#define OBJREVOLUCION_H_INCLUDED
+#ifndef ESFERA_H_INCLUDED
+#define ESFERA_H_INCLUDED
 
 #include "auxiliar.h"
-#include "malla.h"
+#include "objrevolucion.h"
 
 // *****************************************************************************
 //
@@ -20,17 +20,20 @@
 // *****************************************************************************
 
 // *****************************************************************************
-// Cubo con centro en el origen y lado unidad por defecto
-// (tiene 9 vertices y 6 caras)
+// Esfera con centro en el origen y radio
 
-class ObjRevolucion : public Malla3D
+class Esfera : public ObjRevolucion
 {
+
+   private:
+      float radio;
+
    public:
-       ObjRevolucion();
-   ObjRevolucion(const std::string & archivo, int num_instancias) ;
-   ObjRevolucion(std::vector<Tupla3f> archivo, int num_instancias) ;
-protected:
-    void crearMalla(std::vector<Tupla3f> perfil_original, int num_instancias);
+      //Constructor de la esfera con valores por defecto
+      Esfera(int num_vertices = 10, int num_instancias = 20, float radio = 20) ;//Mientras mas vertices mas definida se ve la esfera
+
+   private:
+      void createPerfil(int num_vertices);
 
 } ;
 

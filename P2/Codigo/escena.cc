@@ -21,24 +21,21 @@ Escena::Escena()
     cubo = new Cubo(50);
     piramide = new PiramideHexagonal(100, 25, 50);
 
-    beethoven = new ObjPLY("plys/beethoven.ply");
-    beethoven->createColor();
-    beethoven->visualizarLinea();
-    beethoven->visualizarPuntos();
-    
-    copa = new ObjRevolucion("plys/copa.ply", 15);
-    copa->createColor();
-    copa->visualizarLinea();
-    copa->visualizarPuntos();
+    //copa = new ObjRevolucion("plys/copa_girada_entera.ply", 120);
+    //beethoven = new ObjPLY("plys/beethoven.ply");
+   
+    esfera = new Esfera(15, 50, 25);
+    //cilindro = new Cilindro(15, 50, 100, 25);
+    cono = new Cono(25, 20, 48, 53);
    
 
-   obj = {0, 0, 0}; //CUBO - PIRAMIDE - BEETHOVEN
+   obj = {0, 0, 0, 0}; //CUBO - PIRAMIDE - BEETHOVEN
    vis = {0, 0, 1}; // PUNTOS - LINEAS - SOLIDO
 
 }
 
 //**************************************************************************
-// inicialización de la escena (se ejecuta cuando ya se ha creado la ventana, por
+// inicialización de la escena (se ejecupta cuando ya se ha creado la ventana, por
 // tanto sí puede ejecutar ordenes de OpenGL)
 // Principalmemnte, inicializa OpenGL y la transf. de vista y proyección
 //**************************************************************************
@@ -85,17 +82,46 @@ void Escena::dibujar()
     piramide->draw();
     Para poder dibujarlos simultaneamente
     */
-      if(obj.CUBO){
-         cubo->draw(vis);
-      }
-      if (obj.PIRAMIDE){
-         piramide->draw(vis);
-      }
-      if(obj.BETHOVEN){
-         beethoven->draw(vis);//Escalarlo
-      }
 
-      copa->draw(vis);
+      glPushMatrix();
+         glTranslatef(50, 0, 0);
+         cubo->draw(vis);
+      glPopMatrix();
+      
+      glPushMatrix();
+         glTranslatef(-50, 0, 0);
+         piramide->draw(vis);
+      glPopMatrix();
+
+      glPushMatrix();
+         glTranslatef(0, -100, 0);
+      cono->draw(vis);
+      glPopMatrix();
+
+      glPushMatrix();
+         glTranslatef(0, 100, 0);
+      esfera->draw(vis);
+      glPopMatrix();
+      
+
+      /*
+      glPushMatrix();
+         glScalef(10, 10, 10);
+         glTranslatef(10, 0, 0);
+         beethoven->draw(vis);//Escalarlo
+      glPopMatrix();
+
+   
+      glPushMatrix();
+         glScalef(5, 5, 5);
+         copa->draw(vis);
+      glPopMatrix();
+   */
+
+      //esfera->draw(vis);
+      //cilindro->draw(vis);
+      
+
    
     
 }
@@ -125,6 +151,9 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
 
          case 'B':
             obj.BETHOVEN = (obj.BETHOVEN + 1) % 2;
+            break;
+         case 'A':
+            obj.COPA = (obj.COPA + 1) % 2;
             break;
          }
          break;//SELOBJETO

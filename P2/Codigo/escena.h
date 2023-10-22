@@ -8,6 +8,9 @@
 #include "objply.h"
 #include "objrevolucion.h"
 #include "ply_reader.h"
+#include "esfera.h"
+#include "cilindro.h"
+#include "cono.h"
 
 typedef enum {NADA, SELOBJETO,SELVISUALIZACION} menu;
 
@@ -15,6 +18,7 @@ typedef struct {
     bool CUBO;
     bool PIRAMIDE;
     bool BETHOVEN;
+    bool COPA;
 } objeto;
 
 
@@ -53,6 +57,9 @@ class Escena
    PiramideHexagonal * piramide= nullptr ; // es importante inicializarlo a 'nullptr'
    ObjPLY * beethoven = nullptr;
    ObjRevolucion * copa = nullptr;
+   Esfera * esfera = nullptr;
+   Cilindro * cilindro = nullptr;
+   Cono * cono = nullptr;
 
    
    public:

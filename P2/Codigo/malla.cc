@@ -26,6 +26,10 @@ GLuint Malla3D::CrearVBO( GLuint tipo_vbo , GLuint tam , GLvoid * puntero_ram ){
 void Malla3D::draw(visualizacion vis)
 {
 
+   this->createColor();
+   this->visualizarLinea();
+   this->visualizarPuntos();  
+
    // (la primera vez, se deben crear los VBOs y guardar sus identificadores en el objeto)
    // completar (práctica 1)
    if(id_vbo_ver == 0 && id_vbo_tri == 0 && id_vbo_c == 0){
@@ -40,6 +44,8 @@ void Malla3D::draw(visualizacion vis)
 
          id_vbo_puntos = CrearVBO(GL_ARRAY_BUFFER, p.size()*3*sizeof(float), p.data());
    }
+
+   std::cout << "TAMAÑO COLOR " <<c.size()<<std::endl;
 
    //Habilitar uso ArrayVertices y ArrayColores
    glEnableClientState( GL_VERTEX_ARRAY );
@@ -109,9 +115,9 @@ void Malla3D::visualizarPuntos(){
    }
 }
 
-void Malla3D::createColor(){//Para objetos .ply
+void Malla3D::createColor(Tupla3f tuplaColor){//Morado
    for(int i = 0; i < v.size(); i++){
-      c.push_back({1.0f, 0.0f, 1.0f});//Morado
+      c.push_back({tuplaColor});
    }
 }
 
