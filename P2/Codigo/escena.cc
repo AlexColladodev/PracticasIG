@@ -28,7 +28,7 @@ Escena::Escena()
    
     cono = new Cono(25, 20, 30.0f, 30.0f);
     esfera = new Esfera(15, 50, 25);
-    //cilindro = new Cilindro(15, 50, 100, 25);
+    cilindro = new Cilindro(15, 50, 50, 10);
    
 
    vis = {0, 0, 1}; // PUNTOS - LINEAS - SOLIDO
@@ -118,9 +118,10 @@ void Escena::dibujar()
          copa->draw(vis);
       glPopMatrix();
    
-
-      //esfera->draw(vis);
-      //cilindro->draw(vis);
+      glPushMatrix();
+         glTranslatef(-100, 25, 0);
+      cilindro->draw(vis);
+      glPopMatrix();
       
 
    
