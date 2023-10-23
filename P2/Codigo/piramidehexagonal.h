@@ -28,16 +28,17 @@ class PiramideHexagonal: public Malla3D
       float h;
       float r;
       float r2;
-      const float GRADOS_HEXAGONO = 60.0;
+      const float GRADOS_HEXAGONO = 60.0f;
       const float RADIANES_HEXAGONO = GRADOS_HEXAGONO * (M_PI / 180);
 
    public:
-      PiramideHexagonal(float h=1.0,float r=0.5, float r2=1.0);
+      PiramideHexagonal(float h=1.0f,float r=0.5f, float r2=1.0f);
 
    private: 
       void createVertexArray();
       void createTablaTriangulos();
       void createColor();
+      void createLineasPuntosPiramide();
 } ;
 
 

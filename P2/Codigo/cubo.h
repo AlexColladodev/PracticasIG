@@ -29,12 +29,13 @@ class Cubo : public Malla3D
       float lado;
 
    public:
-      Cubo(float l=1) ;
+      Cubo(float lado=1.0f) ;
 
    private:
       void createVertexArray(float lado);
       void createTablaTriangulos();
       void createColorCubo();
+      void createLineasPuntosCubo();
 
 } ;
 

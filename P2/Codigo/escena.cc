@@ -18,18 +18,19 @@ Escena::Escena()
 
     ejes.changeAxisSize( 5000 );
 
-    cubo = new Cubo(50);
-    piramide = new PiramideHexagonal(100, 25, 50);
 
-    //copa = new ObjRevolucion("plys/copa_girada_entera.ply", 120);
-    //beethoven = new ObjPLY("plys/beethoven.ply");
+    cubo = new Cubo(25.0f);
+    piramide = new PiramideHexagonal(50.0f, 25.0f, 12.5f);
+
+    copa = new ObjRevolucion("plys/copa.ply", 120);
+    beethoven = new ObjPLY("plys/beethoven.ply");
+    beethoven->crearColorLineaPuntos();
    
+    cono = new Cono(25, 20, 30.0f, 30.0f);
     esfera = new Esfera(15, 50, 25);
     //cilindro = new Cilindro(15, 50, 100, 25);
-    cono = new Cono(25, 20, 48, 53);
    
 
-   obj = {0, 0, 0, 0}; //CUBO - PIRAMIDE - BEETHOVEN
    vis = {0, 0, 1}; // PUNTOS - LINEAS - SOLIDO
 
 }
@@ -83,6 +84,7 @@ void Escena::dibujar()
     Para poder dibujarlos simultaneamente
     */
 
+   
       glPushMatrix();
          glTranslatef(50, 0, 0);
          cubo->draw(vis);
@@ -93,21 +95,20 @@ void Escena::dibujar()
          piramide->draw(vis);
       glPopMatrix();
 
-      glPushMatrix();
-         glTranslatef(0, -100, 0);
-      cono->draw(vis);
-      glPopMatrix();
-
+      
       glPushMatrix();
          glTranslatef(0, 100, 0);
-      esfera->draw(vis);
+         esfera->draw(vis);
+      glPopMatrix();
+
+      glPushMatrix();
+         glTranslatef(0, -50, 0);
+         cono->draw(vis);
       glPopMatrix();
       
-
-      /*
       glPushMatrix();
-         glScalef(10, 10, 10);
-         glTranslatef(10, 0, 0);
+         glScalef(5, 5, 5);
+         glTranslatef(20, 5.5, 0);
          beethoven->draw(vis);//Escalarlo
       glPopMatrix();
 
@@ -116,7 +117,7 @@ void Escena::dibujar()
          glScalef(5, 5, 5);
          copa->draw(vis);
       glPopMatrix();
-   */
+   
 
       //esfera->draw(vis);
       //cilindro->draw(vis);
@@ -139,25 +140,6 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
    using namespace std ;
 
    switch(modoMenu){
-      case SELOBJETO:
-         switch(toupper(tecla)){
-         case 'C':
-            obj.CUBO = (obj.CUBO + 1) % 2;
-            break;
-
-         case 'P':
-            obj.PIRAMIDE = (obj.PIRAMIDE + 1) % 2;
-            break;
-
-         case 'B':
-            obj.BETHOVEN = (obj.BETHOVEN + 1) % 2;
-            break;
-         case 'A':
-            obj.COPA = (obj.COPA + 1) % 2;
-            break;
-         }
-         break;//SELOBJETO
-      
       case SELVISUALIZACION:
          switch(toupper(tecla)){ 
             case 'D':
@@ -188,15 +170,6 @@ bool Escena::teclaPulsada( unsigned char tecla, int x, int y )
             salir=true ;
          }
          cout << "SALIENDO " << endl;
-         break ;
-      case 'O' :
-
-         modoMenu=SELOBJETO; 
-         std::cout << "MODO SELECCION DE OBJETO" << std::endl;
-         std::cout << "\tC - DIBUJAR/BORRAR CUBO" << std::endl;
-         std::cout << "\tP - DIBUJAR/BORRAR PIRAMIDE HEXAGONAL" << std::endl;
-         std::cout << "\tQ - VOLVER AL MENU PRINCIPAL" << std::endl;
-
          break ;
 
         case 'V' :

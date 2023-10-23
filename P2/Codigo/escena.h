@@ -12,14 +12,7 @@
 #include "cilindro.h"
 #include "cono.h"
 
-typedef enum {NADA, SELOBJETO,SELVISUALIZACION} menu;
-
-typedef struct {
-    bool CUBO;
-    bool PIRAMIDE;
-    bool BETHOVEN;
-    bool COPA;
-} objeto;
+typedef enum {NADA,SELVISUALIZACION} menu;
 
 
 class Escena
@@ -48,19 +41,20 @@ class Escena
    void clear_window();
 
    menu modoMenu=NADA;
-   objeto obj;
    visualizacion vis; //auxiliar.h
    
    // Objetos de la escena
    Ejes ejes;
    Cubo * cubo = nullptr ; // es importante inicializarlo a 'nullptr'
    PiramideHexagonal * piramide= nullptr ; // es importante inicializarlo a 'nullptr'
+   
+   
    ObjPLY * beethoven = nullptr;
    ObjRevolucion * copa = nullptr;
    Esfera * esfera = nullptr;
    Cilindro * cilindro = nullptr;
    Cono * cono = nullptr;
-
+    
    
    public:
 

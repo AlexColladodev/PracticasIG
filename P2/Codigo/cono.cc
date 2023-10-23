@@ -1,8 +1,7 @@
 #include "auxiliar.h"
-#include "malla.h"
 #include "cono.h"
 
-Cono::Cono(int num_vertices, int num_instancias, float altura, float radio)
+Cono::Cono(const int num_vertices, const int num_instancias, const float altura, const float radio)
 {
 
    this->radio = radio;
@@ -21,8 +20,8 @@ void Cono::createPerfil(int num_vertices){
     for(int i = 0; i < num_vertices ; i++){
         float at = altura * i /(num_vertices - 1);
 
-        x = at;;
-        y = - x;
+        x = at / tan(angulo);
+        y = -at;
         z = 0.0f;
 
         this->v.push_back({x, y, z});

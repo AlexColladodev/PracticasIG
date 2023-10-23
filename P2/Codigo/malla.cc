@@ -24,28 +24,39 @@ GLuint Malla3D::CrearVBO( GLuint tipo_vbo , GLuint tam , GLvoid * puntero_ram ){
 
 //De P1.pdf
 void Malla3D::draw(visualizacion vis)
-{
-
-   this->createColor();
-   this->visualizarLinea();
-   this->visualizarPuntos();  
-
+{  
    // (la primera vez, se deben crear los VBOs y guardar sus identificadores en el objeto)
    // completar (práctica 1)
-   if(id_vbo_ver == 0 && id_vbo_tri == 0 && id_vbo_c == 0){
+   if(id_vbo_ver == 0 && id_vbo_tri == 0 && id_vbo_c == 0 && id_vbo_lineas == 0 && id_vbo_puntos == 0){ //Error aqui
       
-         id_vbo_ver = CrearVBO(GL_ARRAY_BUFFER, v.size()*3*sizeof(float), v.data());
+         id_vbo_ver = CrearVBO(GL_ARRAY_BUFFER, v.size()*sizeof(Tupla3f), v.data());
 
-         id_vbo_tri = CrearVBO(GL_ELEMENT_ARRAY_BUFFER, f.size()*3*sizeof(int), f.data());
+         id_vbo_tri = CrearVBO(GL_ELEMENT_ARRAY_BUFFER, f.size()*sizeof(Tupla3i), f.data());
 
-         id_vbo_c = CrearVBO(GL_ARRAY_BUFFER, c.size()*3*sizeof(float), c.data());
+         id_vbo_c = CrearVBO(GL_ARRAY_BUFFER, c.size()*sizeof(Tupla3f), c.data());
 
-         id_vbo_lineas = CrearVBO(GL_ARRAY_BUFFER, l.size()*3*sizeof(float), l.data());
+         id_vbo_lineas = CrearVBO(GL_ARRAY_BUFFER, l.size()*sizeof(Tupla3f), l.data());
 
-         id_vbo_puntos = CrearVBO(GL_ARRAY_BUFFER, p.size()*3*sizeof(float), p.data());
+         id_vbo_puntos = CrearVBO(GL_ARRAY_BUFFER, p.size()*sizeof(Tupla3f), p.data());
    }
 
-   std::cout << "TAMAÑO COLOR " <<c.size()<<std::endl;
+   /*
+   std::cout << "OBJETO " << this << std::endl;
+
+   std::cout << "Tamaño de Vector Vertices: " << v.size() << std::endl;
+   std::cout << "Tamaño de Vector Caras: " << f.size() << std::endl;
+   std::cout << "Tamaño de Vector Color: " << c.size() << std::endl;
+   std::cout << "Tamaño de Vector Puntos: " << p.size() << std::endl;
+   std::cout << "Tamaño de Vector Lineas: " << l.size() << std::endl;
+
+   std::cout << "ID VERTICES: " << id_vbo_ver << std::endl;
+   std::cout << "ID TRIANGULOS: " << id_vbo_tri << std::endl;
+   std::cout << "ID COLOR: " << id_vbo_c << std::endl;
+   std::cout << "ID LINEAS: " << id_vbo_lineas << std::endl;
+   std::cout << "ID PUNTOS: " << id_vbo_puntos << std::endl;  
+
+   std::cout << std::endl; 
+   */
 
    //Habilitar uso ArrayVertices y ArrayColores
    glEnableClientState( GL_VERTEX_ARRAY );
@@ -100,25 +111,7 @@ void Malla3D::draw(visualizacion vis)
       //Dibujar los triangulos
       this->habilitarUsarTriangulos();
    }
-   
-}
 
-void Malla3D::visualizarLinea(){
-   for(int i = 0; i < v.size(); i++){
-      l.push_back({0.0f, 0.0f, 0.0f });//Negro
-   }
-}
-
-void Malla3D::visualizarPuntos(){
-   for(int i = 0; i < v.size(); i++){
-      p.push_back({1.0f, 0.0f, 0.0f });//Rojo
-   }
-}
-
-void Malla3D::createColor(Tupla3f tuplaColor){//Morado
-   for(int i = 0; i < v.size(); i++){
-      c.push_back({tuplaColor});
-   }
 }
 
 void Malla3D::habilitarUsarTriangulos(){
@@ -130,3 +123,11 @@ void Malla3D::habilitarUsarTriangulos(){
       glBindBuffer ( GL_ELEMENT_ARRAY_BUFFER , 0 );
 }
 
+
+void Malla3D::crearColorLineaPuntos(){
+   for(int i = 0; i < v.size(); i++){
+      c.push_back({1.0f, 0.0f, 1.0f});
+      l.push_back({0.0f, 0.0f, 0.0f});
+      p.push_back({1.0f, 0.0f, 0.0f});
+   }
+}

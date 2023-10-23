@@ -24,19 +24,17 @@ class Malla3D
 
    // función que dibuja el objeto en modo diferido (usando VBOs)
    void draw(visualizacion vis) ;
-   void visualizarLinea();
-   void visualizarPuntos();
    void habilitarUsarTriangulos();
-   void createColor(Tupla3f tupla = {1.0f, 0.0f, 1.0f});
+   void crearColorLineaPuntos();
 
    protected:
 
    //Crear vbo y metodo asociado
-   GLuint id_vbo_tri;
-   GLuint id_vbo_ver;
-   GLuint id_vbo_c;
-   GLuint id_vbo_lineas;
-   GLuint id_vbo_puntos;
+   GLuint id_vbo_tri = 0;
+   GLuint id_vbo_ver = 0;
+   GLuint id_vbo_c = 0;
+   GLuint id_vbo_lineas = 0;
+   GLuint id_vbo_puntos = 0;
    GLuint CrearVBO( GLuint tipo_vbo , GLuint tam , GLvoid * puntero_ram );
    
 

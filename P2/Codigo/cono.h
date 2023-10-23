@@ -31,7 +31,7 @@ class Cono : public ObjRevolucion
 
    public:
       //Constructor de la esfera con valores por defecto
-      Cono(int num_vertices = 3, int num_instancias = 20, float altura = 20, float radio = 20) ;//Mientras mas vertices mas definida se ve la esfera
+      Cono(const int num_vertices = 3, const int num_instancias = 20, const float altura = 20.0f, const float radio = 20.0f) ;//Mientras mas vertices mas definida se ve la esfera
 
    private:
       void createPerfil(int num_vertices);

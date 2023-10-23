@@ -157,14 +157,14 @@ void ObjRevolucion::crearMalla(std::vector<Tupla3f> perfil_original, int num_ins
    //Crear tabla de triangulos 
       //Cuidado con el sentido horario / antihorario
    
-   
+   /*
    std::cout << "TAPA SUP "  <<  tapa_sup << std::endl;
    std::cout << "TAPA INF " << tapa_inf << std::endl;
    std::cout << "DESCENDENTE "  <<  descendente << std::endl;
    std::cout << "ASCENDENTE " << ascendente << std::endl;
    std::cout << "POLO NORTE " << polo_norte << std::endl;
    std::cout << "POLO SUR " << polo_sur << std::endl;
-   
+   */
 
    for(int i = 0; i < num_instancias; i++){
       for(int j = 0; j < tamanioM - 1; j++){
@@ -240,6 +240,12 @@ void ObjRevolucion::crearMalla(std::vector<Tupla3f> perfil_original, int num_ins
    }
 
    this->v = vertices_completos;
+
+   for(int i = 0; i < this->v.size(); i++){
+      c.push_back({1.0f, 0.0f, 1.0f});
+      l.push_back({0.0f, 0.0f, 0.0f});
+      p.push_back({1.0f, 0.0f, 0.0f});
+   }
 }
 
    /*

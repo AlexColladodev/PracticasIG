@@ -9,9 +9,7 @@ Cubo::Cubo(float lado)
    createVertexArray(this->lado);   //Vertices
    createTablaTriangulos();         //Tabla de triangulos
    createColorCubo();
-   visualizarLinea();
-   visualizarPuntos();
-
+   createLineasPuntosCubo();
 }
 
 //Son 9 vertices
@@ -76,5 +74,12 @@ void Cubo::createColorCubo(){//VERDE
    c.push_back({0.0f, 1.0f, 0.0f}); //6
    c.push_back({0.0f, 1.0f, 0.0f}); //7
    
+}
+
+void Cubo::createLineasPuntosCubo(){
+   for(int i = 0; i < v.size(); i++){
+      l.push_back({0.0f, 0.0f, 0.0f});
+      p.push_back({1.0f, 0.0f, 0.0f});
+   }
 }
 

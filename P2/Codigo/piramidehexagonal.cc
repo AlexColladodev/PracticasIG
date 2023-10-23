@@ -15,8 +15,7 @@ PiramideHexagonal::PiramideHexagonal(float h, float r, float r2)
    createVertexArray();
    createTablaTriangulos();
    createColor();
-   visualizarLinea();
-   visualizarPuntos();
+   createLineasPuntosPiramide();
 }
 
 void PiramideHexagonal::createVertexArray(){
@@ -111,5 +110,12 @@ void PiramideHexagonal::createColor(){ //AMARILO p
    c.push_back({1.0f, 1.0f, 0.0f}); //10
    c.push_back({1.0f, 1.0f, 0.0f}); //11
                         
+}
+
+void PiramideHexagonal::createLineasPuntosPiramide(){
+   for(int i = 0; i < v.size(); i++){
+      l.push_back({0.0f, 0.0f, 0.0f});
+      p.push_back({1.0f, 0.0f, 0.0f});
+   }
 }
 
